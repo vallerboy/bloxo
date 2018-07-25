@@ -7,7 +7,7 @@
 </head>
 <body>
 <div style="width: 600px; margin-top: 50px; margin-left: auto; margin-right: auto; padding: 20px;">
-    <form action="/login" method="post" th:object="${registerForm}">
+    <form action="/register" method="post" th:object="${registerForm}">
         <input th:field="*{username}" type="text" class="form-control"  placeholder="Nick">
         <input th:field="*{email}" type="text" class="form-control" placeholder="Email">
         <input th:field="*{password}" type="password" class="form-control"  placeholder="Hasło">
