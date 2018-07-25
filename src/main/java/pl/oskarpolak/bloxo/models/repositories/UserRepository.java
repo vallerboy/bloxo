@@ -8,4 +8,5 @@ import pl.oskarpolak.bloxo.models.UserEntity;
 @Repository
 public interface UserRepository extends CrudRepository<UserEntity, Integer> {
     boolean existsByEmail(String email);
+    boolean existsByEmailAndPassword(String email, String password);
 }

@@ -22,6 +22,11 @@ public class AuthController {
         this.authService = authService;
     }
 
+    @GetMapping("/")
+    public String index() {
+        return "index";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";

@@ -16,7 +16,7 @@ public class AuthService {
     }
 
     public boolean tryLogin(String email, String password){
-        return false; //todo zrobić logike do logowania
+        return userRepository.existsByEmailAndPassword(email, password);
     }
 
     public boolean tryToRegister(RegisterForm registerForm){
