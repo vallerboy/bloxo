@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Logownaie</title>
@@ -7,6 +7,10 @@
 </head>
 <body>
  <div style="width: 400px; margin-top: 50px; margin-left: auto; margin-right: auto">
+         <div th:if="${infoAboutLogin != null}" class="alert alert-danger">
+            <strong th:text="${infoAboutLogin}"></strong>
+         </div>
+
         <form action="/login" method="post">
                     <input id="email" type="text" class="form-control" name="email" placeholder="Email">
                     <input id="password" type="password" class="form-control" name="password" placeholder="Hasło">
