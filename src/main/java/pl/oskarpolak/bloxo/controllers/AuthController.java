@@ -46,9 +46,16 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public String register(@ModelAttribute("registerForm") RegisterForm registerForm){
-        //todo logika rejestracji
-        System.out.println(registerForm);
+    public String register(@ModelAttribute("registerForm") RegisterForm registerForm,
+                           Model model){
+        if(!authService.tryToRegister(registerForm)){
+            model.addAttribute("infoAboutRegister", "Email zajęty");
+            return "register";
+        }
         return "redirect:/login"; //Po rejestracji przenies na logowanie
     }
 }
+
+
+
+
