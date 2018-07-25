@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
- <div style="width: 400px; margin-top: 50px; margin-left: auto; margin-right: auto">
+ <div style="width: 400px;  margin-left: auto; margin-right: auto">
          <div th:if="${infoAboutLogin != null}" class="alert alert-danger">
             <strong th:text="${infoAboutLogin}"></strong>
          </div>
@@ -16,9 +16,9 @@
                     <input style="margin-bottom: 10px"  type="password" class="form-control" name="password" placeholder="Hasło">
 
                     <button type="submit" class="btn btn-success">Zaloguj się</button>
-                        or
-                    <button onclick="location.href='/register'" class="btn btn-link">Zarejestruj się</button>
         </form>
+        <button onclick="javascript:location.href='/register'" class="btn btn-default">Zarejestruj się</button>
+
  </div>
 </body>
 </html>
