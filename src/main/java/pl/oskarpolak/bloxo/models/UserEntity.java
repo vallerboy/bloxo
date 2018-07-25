@@ -18,6 +18,6 @@ public class UserEntity {
     private String password;
     private int age;
 
-    @Column(name = "register_date")
+    @Column(name = "registered_date")
     private LocalDateTime registerDate;
 }
