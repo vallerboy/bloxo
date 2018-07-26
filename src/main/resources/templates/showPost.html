@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${postData.getTitle()}"></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="card-body" style="text-align: center; border: blue dot-dot-dash 2px">
+        <h1 th:text="${postData.getTitle()}"></h1>
+        <span th:text="${postData.getContext()}"></span>
+         <hr/>
+        <br>
+        <small>
+            <strong th:text="${postData.getUser().getUsername()}"></strong>
+            <br/>
+            <strong th:text="${postData.getCreationTime()}"></strong>
+        </small>
+
+        <br/><br/>
+        <a href="/"  class="btn btn-primary" >Wróć na główną</a>
+    </div>
+</body>
+</html>
