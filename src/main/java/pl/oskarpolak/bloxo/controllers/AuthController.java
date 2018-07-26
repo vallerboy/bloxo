@@ -25,11 +25,6 @@ public class AuthController {
         this.sessionService = sessionService;
     }
 
-    @GetMapping("/")
-    public String index(Model model) {
-        model.addAttribute("", sessionService);
-        return "index";
-    }
 
     @GetMapping("/login")
     public String login() {
