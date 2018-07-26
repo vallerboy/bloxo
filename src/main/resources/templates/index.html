@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <strong th:if="${userObject.isLogin()}">Witaj zalogowany userze!</strong>
+    <strong th:text="${userObject.isLogin() ? 'Witaj zalogowany userze' : 'Witaj niezalogowany userze'}"></strong>
     <strong th:if="${userObject.isLogin()}"
             th:text="'Twoj username to: ' + ${userObject.getUserEntity().getUsername()}"></strong>
 </body>
