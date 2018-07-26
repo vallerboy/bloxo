@@ -6,17 +6,28 @@ import pl.oskarpolak.bloxo.models.UserEntity;
 import pl.oskarpolak.bloxo.models.forms.RegisterForm;
 import pl.oskarpolak.bloxo.models.repositories.UserRepository;
 
+import java.util.Optional;
+
 @Service
 public class AuthService {
     final UserRepository userRepository;
+    final SessionService sessionService;
+
 
     @Autowired
-    public AuthService(UserRepository userRepository) {
+    public AuthService(UserRepository userRepository, SessionService sessionService) {
         this.userRepository = userRepository;
+        this.sessionService = sessionService;
     }
 
     public boolean tryLogin(String email, String password){
-        return userRepository.existsByEmailAndPassword(email, password);
+        Optional<UserEntity> userEntity
+                = userRepository.findByEmailAndPassword(email, password);
+        if(userEntity.isPresent()){
+            sessionService.setLogin(true);
+            sessionService.setUserEntity(userEntity.get());
+        }
+        return userEntity.isPresent();
     }
 
     public boolean tryToRegister(RegisterForm registerForm){

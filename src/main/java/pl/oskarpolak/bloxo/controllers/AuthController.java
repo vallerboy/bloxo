@@ -10,20 +10,24 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.oskarpolak.bloxo.models.forms.RegisterForm;
 import pl.oskarpolak.bloxo.models.services.AuthService;
+import pl.oskarpolak.bloxo.models.services.SessionService;
 
 @Controller
 public class AuthController {
 
-    final
-    AuthService authService;
+    final AuthService authService;
+
+    final SessionService sessionService;
 
     @Autowired
-    public AuthController(AuthService authService) {
+    public AuthController(AuthService authService, SessionService sessionService) {
         this.authService = authService;
+        this.sessionService = sessionService;
     }
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("userObject", sessionService);
         return "index";
     }
 
