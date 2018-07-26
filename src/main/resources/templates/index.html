@@ -12,6 +12,8 @@
     <div style="text-align: center;">
         <div th:each="oneElement : ${posts}">
             <h2 th:text="${oneElement.getTitle()}"></h2>
+            <strong th:text="${oneElement.getUser().getEmail()}"></strong>
+         <hr/>
         </div>
     </div>
 </body>

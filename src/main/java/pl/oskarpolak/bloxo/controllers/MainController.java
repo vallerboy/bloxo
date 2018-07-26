@@ -23,6 +23,7 @@ public class MainController {
     public String index(Model model) {
         model.addAttribute("userObject", sessionService);
         model.addAttribute("posts", postService.getAllPosts());
+
         return "index";
     }
 
