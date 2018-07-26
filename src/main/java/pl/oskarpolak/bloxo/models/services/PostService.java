@@ -30,4 +30,8 @@ public class PostService {
         postEntity.setUserId(sessionService.getUserEntity().getId());
         return postEntity;
     }
+
+    public Iterable<PostEntity> getAllPosts(){
+        return postRepository.findAll();
+    }
 }
