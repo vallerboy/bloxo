@@ -58,6 +58,14 @@ public class AuthController {
         }
         return "redirect:/login"; //Po rejestracji przenies na logowanie
     }
+
+    @GetMapping("/logout")
+    public String logout(){
+        sessionService.setLogin(false);
+        sessionService.setUserEntity(null);
+
+        return "redirect:/login";
+    }
 }
 
 
