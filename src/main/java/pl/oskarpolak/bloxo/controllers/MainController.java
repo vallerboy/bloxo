@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import pl.oskarpolak.bloxo.models.services.PostService;
 import pl.oskarpolak.bloxo.models.services.SessionService;
 
+import java.time.LocalDateTime;
+
 @Controller
 public class MainController {
 
@@ -23,6 +25,7 @@ public class MainController {
     public String index(Model model) {
         model.addAttribute("userObject", sessionService);
         model.addAttribute("posts", postService.getAllPosts());
+
 
         return "index";
     }

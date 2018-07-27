@@ -7,6 +7,8 @@ import pl.oskarpolak.bloxo.models.UserEntity;
 import pl.oskarpolak.bloxo.models.forms.PostForm;
 import pl.oskarpolak.bloxo.models.repositories.PostRepository;
 
+import java.util.Collections;
+
 @Service
 public class PostService {
 
@@ -33,7 +35,7 @@ public class PostService {
     }
 
     public Iterable<PostEntity> getAllPosts(){
-        return postRepository.findAll();
+        return postRepository.findAllByOrderByIdDesc();
     }
 
     public PostEntity getAllPostData(int id) {
