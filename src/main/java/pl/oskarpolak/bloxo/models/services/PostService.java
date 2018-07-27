@@ -35,7 +35,7 @@ public class PostService {
     }
 
     public Iterable<PostEntity> getAllPosts(){
-        return postRepository.findAllByOrderByIdDesc();
+        return postRepository. findAllByOrderByIdDesc();
     }
 
     public PostEntity getAllPostData(int id) {

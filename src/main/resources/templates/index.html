@@ -15,9 +15,9 @@
 
         <br/><br/>
 
-        <div  class="alert alert-success" th:each="oneElement : ${posts}">
-            <a th:href="'/post/' + ${oneElement.getId()}">
-                <h2 class="alert-heading" th:text="${oneElement.getTitle()}"></h2>
+        <div  class="alert alert-success" th:each="post : ${posts}">
+            <a th:href="'/post/' + ${post.getId()}">
+                <h2 class="alert-heading" th:text="${post.getTitle()}"></h2>
             </a>
         </div>
 
