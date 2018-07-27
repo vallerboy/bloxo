@@ -53,12 +53,12 @@ public class PostController {
     }
 
     @PostMapping("/comment/{id}")
-    public String comment(@PathVariable("id") int id,
+    public String comment(@PathVariable("id") int postId,
                           @ModelAttribute("commentForm") CommentForm comment){
         if(!sessionService.isLogin()){
             return "redirect:/login";
         }
-        commentService.addComment(comment, id);
-        return "redirect:/post/" + id;
+        commentService.addComment(comment, postId);
+        return "redirect:/post/" + postId;
     }
 }
