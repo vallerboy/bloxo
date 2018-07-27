@@ -28,14 +28,12 @@ public class CommentService {
     private CommentEntity createCommentEntity(CommentForm commentForm, int postId) {
         CommentEntity commentEntity = new CommentEntity();
         PostEntity postEntity = new PostEntity();
-        UserEntity userEntity = new UserEntity();
 
         postEntity.setId(postId);
-        userEntity.setId(sessionService.getUserEntity().getId());
 
         commentEntity.setContext(commentForm.getContext());
         commentEntity.setPost(postEntity);
-        commentEntity.setUser(userEntity);
+        commentEntity.setUser(sessionService.getUserEntity() );
         return commentEntity;
     }
 
