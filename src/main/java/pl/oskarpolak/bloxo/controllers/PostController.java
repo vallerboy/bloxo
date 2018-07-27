@@ -3,31 +3,26 @@ package pl.oskarpolak.bloxo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.HttpRequestHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
+import pl.oskarpolak.bloxo.models.forms.CommentForm;
 import pl.oskarpolak.bloxo.models.forms.PostForm;
+import pl.oskarpolak.bloxo.models.services.CommentService;
 import pl.oskarpolak.bloxo.models.services.PostService;
 import pl.oskarpolak.bloxo.models.services.SessionService;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @Controller
 public class PostController {
 
     final PostService postService;
     final SessionService sessionService;
-
+    final CommentService commentService;
 
 
     @Autowired
-    public PostController(PostService postService, SessionService sessionService) {
+    public PostController(PostService postService, SessionService sessionService, CommentService commentService) {
         this.postService = postService;
         this.sessionService = sessionService;
+        this.commentService = commentService;
     }
 
 
@@ -51,8 +46,19 @@ public class PostController {
     @GetMapping("/post/{id}")
     public String post(@PathVariable("id") int id,
                        Model model){
+
         model.addAttribute("postData",  postService.getAllPostData(id));
+        model.addAttribute("commentForm", new CommentForm());
         return "showPost";
     }
 
+    @PostMapping("/comment/{id}")
+    public String comment(@PathVariable("id") int id,
+                          @ModelAttribute("commentForm") CommentForm comment){
+        if(!sessionService.isLogin()){
+            return "redirect:/login";
+        }
+        commentService.addComment(comment, id);
+        return "redirect:/post/" + id;
+    }
 }

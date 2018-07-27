@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,4 +22,7 @@ public class PostEntity {
     private String context;
     @Column(name = "creation_time")
     private LocalDateTime creationTime;
+
+    @OneToMany(mappedBy = "post")
+    private List<CommentEntity> comments;
 }

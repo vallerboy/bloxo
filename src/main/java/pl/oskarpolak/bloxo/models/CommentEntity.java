@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Data
-@Table(name = "commnet")
+@Table(name = "comment")
 public class CommentEntity {
 
     @Id
@@ -24,7 +24,7 @@ public class CommentEntity {
 
     @JoinColumn(name = "post_id")
     @ManyToOne //wiele komentarzy ma jeden post = jeden komentarz ma jeden post
-    private PostEntity postId;
+    private PostEntity post;
 
     @Column(name = "creation_date")
     private LocalDateTime creationDate;

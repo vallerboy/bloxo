@@ -10,7 +10,6 @@
     <div class="card-body" style="text-align: center;">
         <h1 th:text="${postData.getTitle()}"></h1>
         <span th:text="${postData.getContext()}"></span>
-         <hr/>
         <br>
         <small>
             <strong th:text="${postData.getUser().getUsername()}"></strong>
@@ -18,7 +17,26 @@
             <strong th:text="${postData.getCreationTime()}"></strong>
         </small>
 
+        <br/><br/>  <hr/>
+
+        <div th:each="comment : ${postData.getComments()}">
+            <b>
+                <span th:text="${comment.getUser().getUsername() + ': '}"></span>
+            </b>
+
+            <span th:text="${comment.getContext()}"></span>
+        </div>
+
+
+
+        <form th:action="'/comment/' + ${postData.getId()}" method="post">
+            <input name="context" type="text" placeholder="Treść komenta"/>
+            <input class="btn btn-primary" type="submit" value="Wyślij"/>
+        </form>
+
+
         <br/><br/>
+
         <a href="/"  class="btn btn-primary" >Wróć na główną</a>
     </div>
 </body>

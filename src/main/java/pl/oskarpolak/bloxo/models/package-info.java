@@ -1,1 +1,0 @@
-package pl.oskarpolak.bloxo.models;

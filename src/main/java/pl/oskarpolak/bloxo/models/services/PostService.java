@@ -41,4 +41,5 @@ public class PostService {
     public PostEntity getAllPostData(int id) {
         return postRepository.findById(id).get();
     }
+
 }
