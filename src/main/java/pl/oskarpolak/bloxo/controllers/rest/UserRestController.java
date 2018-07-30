@@ -19,7 +19,11 @@ public class UserRestController {
     }
 
     @GetMapping(value = "/user", produces = "application/json")
-    public ResponseEntity getAllUsers(){
+    public ResponseEntity getAllUsers(@RequestHeader("Api-Key") String key){
+        if(!key.equals("tajnehaslo")){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Key do not exist");
+        }
+
         return ResponseEntity.ok(authService.getAllUsers());
     }
 
