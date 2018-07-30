@@ -8,6 +8,7 @@ import pl.oskarpolak.bloxo.models.forms.PostForm;
 import pl.oskarpolak.bloxo.models.repositories.PostRepository;
 
 import java.util.Collections;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -42,11 +43,14 @@ public class PostService {
         return postRepository.findById(id).get();
     }
 
+
+    public Optional<PostEntity> getPost(int id) {
+        return postRepository.findById(id);
+    }
+
     public void deletePostById(int id){
         postRepository.deleteById(id);
     }
 
-    public PostEntity getPost(int id){
-        return postRepository.findById(id).orElse(null);
-    }
+
 }

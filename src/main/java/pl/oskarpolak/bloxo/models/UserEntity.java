@@ -16,8 +16,11 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String username;
+    @JsonIgnore
     private String email;
+    @JsonIgnore
     private String password;
+    @JsonIgnore
     private int age;
 
     @Column(name = "registered_date")
