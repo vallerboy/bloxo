@@ -49,5 +49,12 @@ public class PostRestController {
        return ResponseEntity.ok().build();
     }
 
+    @PutMapping(value = "/post", consumes = "application/json")
+    public ResponseEntity updatePost(@RequestBody PostEntity postEntity){ //Można utworzyć nową klasę
+        postService.savePost(postEntity);
+        return ResponseEntity.ok(postEntity);
+    }
+
+
 
 }

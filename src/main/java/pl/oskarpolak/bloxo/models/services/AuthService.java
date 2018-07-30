@@ -6,6 +6,7 @@ import pl.oskarpolak.bloxo.models.UserEntity;
 import pl.oskarpolak.bloxo.models.forms.RegisterForm;
 import pl.oskarpolak.bloxo.models.repositories.UserRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,4 +49,17 @@ public class AuthService {
         userEntity.setUsername(registerForm.getUsername());
         return userEntity;
     }
+
+    public Iterable<UserEntity> getAllUsers(){
+        return userRepository.findAll();
+    }
+
+    public Optional<UserEntity> findByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
+
+
+
+
+
 }

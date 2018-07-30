@@ -26,7 +26,9 @@ public class UserEntity {
     @Column(name = "registered_date")
     private LocalDateTime registerDate;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+
+    //Nie można usunać encji, ktore sa gdzies prztrzymywane (u nas w sesji)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER /* cascade = CascadeType.ALL */, orphanRemoval = true)
     @JsonIgnore
     private List<PostEntity> posts;
 }
