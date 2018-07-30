@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.oskarpolak.bloxo.models.PostEntity;
+import pl.oskarpolak.bloxo.models.UserEntity;
 import pl.oskarpolak.bloxo.models.services.PostService;
 
 import java.util.Optional;
@@ -31,4 +32,22 @@ public class PostRestController {
                 .map(s -> ResponseEntity.ok(s))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
+
+    @PostMapping(value = "/post", consumes = "application/json")
+    public ResponseEntity savePost(@RequestBody PostEntity postEntity){ //Można utworzyć nową klasę
+
+       // System.out.println(postEntity);
+        postService.savePost(postEntity);
+        return ResponseEntity.ok(postEntity);
+    }
+
+
+    @DeleteMapping(value = "/post/{id}", produces = "application/json")
+    public ResponseEntity deletePost(@PathVariable("id") int id){
+       postService.deletePostById(id);
+
+       return ResponseEntity.ok().build();
+    }
+
+
 }
