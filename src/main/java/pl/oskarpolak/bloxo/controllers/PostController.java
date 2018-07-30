@@ -61,4 +61,15 @@ public class PostController {
         commentService.addComment(comment, postId);
         return "redirect:/post/" + postId;
     }
+
+    @GetMapping("/post/delete/{id}")
+    public String delete(@PathVariable("id") int postId){
+        if (sessionService.isLogin() && sessionService.getUserEntity().getPosts()
+                .stream()
+                .anyMatch(s -> s.getId() == postId)) {
+            postService.deletePostById(postId);
+            return "redirect:/";
+        }
+        return "redirect:/post/" + postId;
+    }
 }

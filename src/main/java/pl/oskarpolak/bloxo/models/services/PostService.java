@@ -42,4 +42,11 @@ public class PostService {
         return postRepository.findById(id).get();
     }
 
+    public void deletePostById(int id){
+        postRepository.deleteById(id);
+    }
+
+    public PostEntity getPost(int id){
+        return postRepository.findById(id).orElse(null);
+    }
 }

@@ -22,6 +22,6 @@ public class UserEntity {
     @Column(name = "registered_date")
     private LocalDateTime registerDate;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<PostEntity> posts;
 }

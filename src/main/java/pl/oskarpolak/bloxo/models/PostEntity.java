@@ -23,6 +23,6 @@ public class PostEntity {
     @Column(name = "creation_time")
     private LocalDateTime creationTime;
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", orphanRemoval = true,  cascade = CascadeType.ALL)
     private List<CommentEntity> comments;
 }
