@@ -1,5 +1,6 @@
 package pl.oskarpolak.bloxo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.extern.apachecommons.CommonsLog;
 
@@ -24,6 +25,7 @@ public class CommentEntity {
 
     @JoinColumn(name = "post_id")
     @ManyToOne //wiele komentarzy ma jeden post = jeden komentarz ma jeden post
+    @JsonIgnore
     private PostEntity post;
 
     @Column(name = "creation_date")

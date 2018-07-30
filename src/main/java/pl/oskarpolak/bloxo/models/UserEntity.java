@@ -1,5 +1,6 @@
 package pl.oskarpolak.bloxo.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -23,5 +24,6 @@ public class UserEntity {
     private LocalDateTime registerDate;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
     private List<PostEntity> posts;
 }
